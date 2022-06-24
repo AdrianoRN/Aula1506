@@ -5,11 +5,11 @@ namespace ProjetoMySQL.Controllers
 {
     [Route("[controller]/[action]")]
     [ApiController]
-    public class CargoController : ControllerBase
+    public class EleitorController : ControllerBase
     {
         private BDContexto contexto;
         
-        public CargoController(BDContexto bdContexto)
+        public EleitorController(BDContexto bdContexto)
         {
             contexto = bdContexto;
         }

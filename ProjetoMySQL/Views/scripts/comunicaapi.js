@@ -18,12 +18,18 @@ function grid() {
                 linha.append($('<td></td>').html(resposta[i].nome));
                 
                 let botaoExcluir = $('<button class="btn btn-danger"></button>').attr('type', 'button').html('Excluir').attr('onclick', 'excluir(' + resposta[i].id + ')');
-
+               
                 let acoes = $('<td></td>');
                 acoes.append(botaoExcluir);
-
                 linha.append(acoes);
-                
+                $('#grid').append(linha);
+
+                let botaoVisualizar = $('<button class="btn btn-info"></button>').attr('type', 'button').html('Visualizar').attr('onclick', 'visualizar(' + resposta[i].id + ')');
+
+
+                let ver = $('<td></td>');
+                ver.append(botaoVisualizar);               
+                linha.append(ver);                
                 $('#grid').append(linha);
             }
         })
@@ -45,6 +51,23 @@ function excluir(id) {
         },
         error: function(erro, mensagem, excecao) { 
             alert("Erro ao realizar a remoção!");
+        }
+    });
+}
+
+function visualizar(id) {
+    console.log(id)
+    $.ajax({
+        type: 'GET',
+        url: 'https://localhost:5001/Eleitor/Visualizar/',
+        contentType: "application/json; charset=utf-8",
+        data: JSON.stringify(id),
+        success: function(resposta) { 
+            alert(Eleitor);
+            location.reload(true);
+        },
+        error: function(erro, mensagem, excecao) { 
+            alert("erro!");
         }
     });
 }

@@ -59,12 +59,13 @@ function visualizar(id) {
     console.log(id)
     $.ajax({
         type: 'GET',
-        url: 'https://localhost:5001/Eleitor/Visualizar/',
+        url: 'https://localhost:5001/Eleitor/Visualizar/'+id,
         contentType: "application/json; charset=utf-8",
         data: JSON.stringify(id),
         success: function(resposta) { 
-            alert(Eleitor);
+            alert("Nome: " + resposta.nome);
             location.reload(true);
+           
         },
         error: function(erro, mensagem, excecao) { 
             alert("erro!");
